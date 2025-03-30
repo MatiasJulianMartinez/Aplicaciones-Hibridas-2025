@@ -1,17 +1,17 @@
 [
   {
-    "id": "42af12f6-9beb-4206-8f7c-cff4bc0bdba1",
     "name": "Monitor",
-    "description": "Monitor Asus"
+    "description": "Monitor Asus",
+    "id": "f0866bfd-47e0-4a1e-8f9c-7724bcda2e2e"
   },
   {
-    "id": "e7934e0f-6f02-457d-9dab-526db0386f2e",
-    "name": "Teclado redragon",
-    "description": "Redragon Kumara RGB"
+    "name": "Teclado Redragon",
+    "description": "Redragon Kumara RGB",
+    "id": "499176ce-c2ab-4d06-aea5-98c90e64247f"
   },
   {
-    "id": "696505a8-fddb-4685-ad6a-df82c10c152b",
-    "name": "Mouse logitech",
-    "description": "Mouse Logitech G502"
+    "name": "Mouse Logitech",
+    "description": "Mouse Logitech G502",
+    "id": "5ce43a47-5ad9-444e-9956-5935c1c0d4cf"
   }
 ]

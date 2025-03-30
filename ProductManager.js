@@ -1,46 +1,46 @@
 const fs = require("fs/promises");
+const crypto = require("crypto"); 
+
 const path = "./products.json";
 
 class ProductManager {
-  products = [];
-  constructor(products = []) {
-    this.products = products;
+  constructor() {
+    this.products = [];
   }
+
   randomID() {
     return crypto.randomUUID();
   }
 
-
-  // GUARDAR
+  // Post: Porque esta función agrega un nuevo producto al archivo products.json.
   async setProduct(product) {
     try {
-      await this.getProducts();
-      product.id = this.randomID();
-      this.products.push(product);
+      const products = await this.getProducts(); 
+      product.id = this.randomID(); 
+      products.push(product); 
 
-      const data = JSON.stringify(this.products, null, 2);
-      await fs.writeFile(path, data);
+      const data = JSON.stringify(products, null, 2);
+      await fs.writeFile(path, data); 
       return product.id;
     } catch (error) {
       console.error("Error al guardar el producto", error);
     }
   }
 
-  // LEER
+  // Get: Porque esta función obtiene todos los productos del archivo products.json.
   async getProducts() {
     try {
       const data = await fs.readFile(path, "utf-8");
-      this.products = JSON.parse(data);
+      return JSON.parse(data);
     } catch (error) {
-      console.error("Error al leer el archivo", error);
+      return []; 
     }
   }
 
-  //BUSCAR
-
+  // BUSCAR
   async getProductById(id) {
-    await this.getProducts();
-    const product = this.products.find((item) => item.id === id);
+    const products = await this.getProducts(); 
+    const product = products.find((item) => item.id === id);
     return product ? product : "Not found";
   }
 }
