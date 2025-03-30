@@ -1,49 +1,48 @@
-const fs = require("fs");
-const path = './productos.json';
-
+const fs = require("fs/promises");
+const path = "./products.json";
 
 class ProductManager {
-    constructor() {
-        this.products = [];
-        
+  products = [];
+  constructor(products = []) {
+    this.products = products;
+  }
+  randomID() {
+    return crypto.randomUUID();
+  }
+
+
+  // GUARDAR
+  async setProduct(product) {
+    try {
+      await this.getProducts();
+      product.id = this.randomID();
+      this.products.push(product);
+
+      const data = JSON.stringify(this.products, null, 2);
+      await fs.writeFile(path, data);
+      return product.id;
+    } catch (error) {
+      console.error("Error al guardar el producto", error);
     }
+  }
 
-    addProduct(producto) {
-        // Valido que todos los campos sean obligatorios
-        if (!producto.titulo || !producto.descripcion|| !producto.precio|| !producto.stock) {
-            console.log("Todos los campos son obligatorios");
-            return;
-        }
-
-        
-        // Definir el id único
-        let proximoId;
-        if (this.products.length === 0) {
-            proximoId = 1; // Si no hay productos en el array el primer producto sera 1
-        } else {
-            proximoId = this.products[this.products.length - 1].id + 1; 
-        }
-
-        // Asigno el id al producto
-        producto.id = proximoId;
-
-        // Agregar el producto al array
-        this.products.push(producto);
-        console.log("Producto agregado:", producto);
+  // LEER
+  async getProducts() {
+    try {
+      const data = await fs.readFile(path, "utf-8");
+      this.products = JSON.parse(data);
+    } catch (error) {
+      console.error("Error al leer el archivo", error);
     }
+  }
 
-    getProducts() {
-        return this.products;
-    }
+  //BUSCAR
 
-    getProductById(id) {
-        for (let i = 0; i < this.products.length; i++) {
-            if (this.products[i].id === id) {
-                return this.products[i];
-            }
-        }
-        console.log("Not found");
-    }
+  async getProductById(id) {
+    await this.getProducts();
+    const product = this.products.find((item) => item.id === id);
+    return product ? product : "Not found";
+  }
 }
 
-module.exports = ProductManager; // Exporto con CommonJS
+module.exports = ProductManager;
