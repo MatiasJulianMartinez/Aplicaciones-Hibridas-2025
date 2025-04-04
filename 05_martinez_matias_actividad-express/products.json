@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Teclado Mecanico Redragon",
+        "description": "Kumara white RGB 100%"
+    },
+    {
+        "id": 2,
+        "name": "Mouse Logitech g502",
+        "email": "Mouse wireless cableado"
+    },
+    {
+        "id": 3,
+        "name": "Auricular Astro a10 ",
+        "email": "Auricular gaming cableado"
+    },
+    {
+        "id": 4,
+        "name": "Procesador Ryzen 5000 series",
+        "email": "Ryzen 5 5600g"
+    }
+]

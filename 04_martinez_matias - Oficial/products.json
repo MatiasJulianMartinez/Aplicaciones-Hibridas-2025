@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Monitor",
+    "description": "Monitor Asus",
+    "id": "f0866bfd-47e0-4a1e-8f9c-7724bcda2e2e"
+  },
+  {
+    "name": "Teclado Redragon",
+    "description": "Redragon Kumara RGB",
+    "id": "499176ce-c2ab-4d06-aea5-98c90e64247f"
+  },
+  {
+    "name": "Mouse Logitech",
+    "description": "Mouse Logitech G502",
+    "id": "5ce43a47-5ad9-444e-9956-5935c1c0d4cf"
+  }
+]
